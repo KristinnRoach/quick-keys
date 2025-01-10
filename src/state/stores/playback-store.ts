@@ -3,7 +3,7 @@ import { createStore } from 'solid-js/store';
 import { WebAudioEngine } from '../../logic/audio/WebAudioEngine';
 import { MidiNoteUtils } from '../../global/define/midiNote';
 
-// SHOULD BE USING createSignal INSTEAD OF createStore ??
+// Draft - Plan system that can be used in Hljodsmali as well
 
 export const createPlaybackStore = (audioEngine: WebAudioEngine) => {
   const [state, setState] = createStore({
@@ -30,7 +30,6 @@ export const createPlaybackStore = (audioEngine: WebAudioEngine) => {
         audioEngine.setSamplerMode(newMode as 'single-sample' | 'multi-sample');
       },
       playNote: (midiNote: number) => {
-        if (!MidiNoteUtils.isMidiValue(midiNote)) return;
         // todo: add velocity
         audioEngine.playNote(midiNote);
         setState('activeNotes', (prev) => new Set(prev).add(midiNote));

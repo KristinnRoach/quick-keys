@@ -27,8 +27,7 @@ export class WebAudioEngine {
   silenceThreshold: number = 0.18; // test values on different samples after adding amplitude normalization
   rootMidiNote: number = 60; // C4 - Middle C
 
-  // TODO: Consider creating a SampleBuffers interface/type
-
+  private config: WebAudioEngineConfig;
   private loadedInstruments: Map<string, Instrument> = new Map(); // key: id ?? , value: instrument
 
   // could be generalized to just 'selectedInstrument/s.buffers' and if single-sample mode than only uses C4 (or closest C or user selected root pitch)
@@ -38,8 +37,8 @@ export class WebAudioEngine {
   private activeVoiceNodes: Map<number, VoiceNode> = new Map();
   private samplerMode: 'single-sample' | 'multi-sample';
 
-  constructor(private config?: WebAudioEngineConfig) {
-    this.config = config ?? DEFAULT_CONFIG;
+  constructor() {
+    this.config = DEFAULT_CONFIG;
     this.context = new AudioContext();
 
     this.masterGain = this.context.createGain();
@@ -107,7 +106,14 @@ export class WebAudioEngine {
 
   async fetchAudioFile(path: string): Promise<ArrayBuffer> {
     const response = await fetch(path);
-    // console.log('Fetching from path: ', path, 'Content-Type:', response.headers.get('Content-Type'));
+    console.log(
+      'Fetching from path:',
+      path,
+      '\nStatus:',
+      response.status,
+      '\nContent-Type:',
+      response.headers.get('Content-Type')
+    );
 
     if (!response.ok) {
       throw new Error(
@@ -115,7 +121,15 @@ export class WebAudioEngine {
       );
     }
 
-    return response.arrayBuffer();
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const buffer = await response.arrayBuffer();
+    if (buffer.byteLength < 2000) {
+      console.warn('Warning: Received suspiciously small audio file');
+    }
+    return buffer;
   }
 
   async decodeAudioData(arrayBuffer: ArrayBuffer): Promise<AudioBuffer> {
@@ -134,11 +148,13 @@ export class WebAudioEngine {
   }
 
   async loadSingle(path: string): Promise<void> {
+    this.rootMidiNote = this.config.defaultInstruments.singleSample.midiNote; // REFACTOR THIS !!
+
     const arrayBuffer = await this.fetchAudioFile(path);
     const audioBuffer = await this.decodeAudioData(arrayBuffer);
 
     const thresholdTime = this.detectThresholdCrossing(audioBuffer);
-    console.log('start time after silence threshold: ', thresholdTime);
+    // console.log('start time after silence threshold: ', thresholdTime);
 
     const audioBufferMap = new Map<number, AudioBuffer>();
     audioBufferMap.set(0, audioBuffer);
@@ -152,13 +168,14 @@ export class WebAudioEngine {
     const midiStartTimeMap: Map<number, number> = new Map();
 
     try {
+      console.log('trying to load multi');
       await Promise.all(
         samples.map(async ({ midiNote, path }) => {
           const arrayBuffer = await this.fetchAudioFile(path);
           const audioBuffer = await this.decodeAudioData(arrayBuffer);
 
           const thresholdTime = this.detectThresholdCrossing(audioBuffer);
-          console.log('start time after silence threshold: ', thresholdTime);
+          // console.log('start time after silence threshold: ', thresholdTime);
 
           this.multiSampleBuffers.set(midiNote, audioBuffer); // Remove and use midiToBuffers -> loadedInstruments instead ??
 
@@ -194,12 +211,13 @@ export class WebAudioEngine {
     midiNote: number,
     mode: 'single-sample' | 'multi-sample' = this.samplerMode
   ) {
+    console.log('mode: ', mode);
     switch (mode) {
       case 'single-sample': // Todo: handle current single sample index if more than one loaded
         return {
           buffer: this.singleSampleBuffers.get(0),
           sampleMidiNote: this.rootMidiNote,
-          // startTime:
+          // TODO: startTime
         };
       case 'multi-sample':
         if (this.multiSampleBuffers.has(midiNote)) {

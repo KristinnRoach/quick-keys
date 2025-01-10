@@ -5,13 +5,8 @@ import { createPlaybackStore } from './state/stores/playback-store';
 import { KeyboardController } from './ui/input/KeyboardController';
 import KeyboardSpline from './ui/ui-components/KeyboardSpline';
 
-import { DEFAULT_INSTRUMENTS } from './global/paths';
-
 const App: Component = () => {
-  const audioEngine = new WebAudioEngine({
-    sampler_mode: 'multi-sample',
-    defaultInstruments: DEFAULT_INSTRUMENTS,
-  });
+  const audioEngine = new WebAudioEngine();
 
   const [playbackState, playbackActions] = createPlaybackStore(audioEngine);
 
@@ -39,8 +34,11 @@ const App: Component = () => {
           </div>
 
           <div>
-            <button onClick={playbackActions.toggleSamplerMode}>
-              Toggle Mode: {playbackState.instrumentMode}
+            <button
+              class='toggle-button'
+              onClick={playbackActions.toggleSamplerMode}
+            >
+              Toggle: {playbackState.instrumentMode}
             </button>
           </div>
 

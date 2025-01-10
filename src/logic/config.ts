@@ -6,6 +6,6 @@ export interface WebAudioEngineConfig {
 }
 
 export const DEFAULT_CONFIG: WebAudioEngineConfig = {
-  sampler_mode: 'multi-sample',
+  sampler_mode: 'single-sample',
   defaultInstruments: DEFAULT_INSTRUMENTS,
 };
