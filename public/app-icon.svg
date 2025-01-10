@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#111827" rx="100"/>
+  
+  <!-- Piano keys -->
+  <g transform="translate(96, 156)">
+    <!-- White keys -->
+    <rect x="0" y="0" width="60" height="200" fill="white" rx="10"/>
+    <rect x="70" y="0" width="60" height="200" fill="white" rx="10"/>
+    <rect x="140" y="0" width="60" height="200" fill="white" rx="10"/>
+    <rect x="210" y="0" width="60" height="200" fill="white" rx="10"/>
+    <rect x="280" y="0" width="60" height="200" fill="white" rx="10"/>
+    
+    <!-- Black keys -->
+    <rect x="45" y="0" width="40" height="120" fill="#111827" rx="8"/>
+    <rect x="115" y="0" width="40" height="120" fill="#111827" rx="8"/>
+    <rect x="255" y="0" width="40" height="120" fill="#111827" rx="8"/>
+  </g>
+</svg>

@@ -1,0 +1,4 @@
+// Only add what is needed or significantly useful for dev experience
+
+Currently considering: 
+solid-use  // Hooks for solidjs 

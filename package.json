@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/three": "^0.172.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
@@ -19,6 +20,9 @@
     "vite-plugin-solid": "^2.11.0"
   },
   "dependencies": {
-    "solid-js": "^1.9.3"
+    "@splinetool/runtime": "^1.9.58",
+    "solid-js": "^1.9.3",
+    "solid-three": "^0.2.0",
+    "three": "^0.172.0"
   }
 }

@@ -10,3 +10,11 @@ export default defineConfig({
     target: 'esnext',
   },
 });
+
+//  // PWA - Still Testing below:
+//  rollupOptions: {
+//   input: {
+//     main: 'index.html',
+//     sw: 'service-worker.js',
+//   },
+// },
