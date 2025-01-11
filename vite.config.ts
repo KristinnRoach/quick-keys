@@ -8,13 +8,14 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'keyboard-spline': ['./src/ui/ui-components/KeyboardSpline'],
+          // 'audio-engine': ['./src/logic/audio/WebAudioEngine'],
+        },
+      },
+    },
+    minify: true,
   },
 });
-
-//  // PWA - Still Testing below:
-//  rollupOptions: {
-//   input: {
-//     main: 'index.html',
-//     sw: 'service-worker.js',
-//   },
-// },

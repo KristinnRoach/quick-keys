@@ -2,9 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
 
-    <meta name="theme-color" content="#111827" />
+    <title>Quick-Keyz</title>
+    <meta
+      name="description"
+      content="Keyboard instrument web-app using computer keyboard or midi"
+    />
+
+    <!-- Manifest and icons -->
     <link rel="manifest" href="/manifest.json" />
     <link
       rel="icon"
@@ -15,20 +24,44 @@
     <link
       rel="icon"
       type="image/png"
+      sizes="192x192"
+      href="/icons/maskable-192x192.png"
+      purpose="maskable"
+    />
+    <link
+      rel="icon"
+      type="image/png"
       sizes="512x512"
       href="/icons/icon-512x512.png"
     />
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/icons/maskable-512x512.png"
+      purpose="maskable"
+    />
 
-    <title>QuickKeyz - Piano</title>
+    <!-- PWA specific meta tags -->
+    <meta name="theme-color" content="#111827" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Additional iOS specific icons (if needed) -->
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="/icons/maskable-192x192.png"
+      purpose="maskable"
+    />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <div id="root"></div>
 
     <script src="/src/index.tsx" type="module"></script>
 
-    <!-- PWA - still testing -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {

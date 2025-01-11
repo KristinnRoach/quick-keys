@@ -3,6 +3,7 @@ import { onMount } from 'solid-js';
 import { Application } from '@splinetool/runtime';
 
 interface KeyboardSplineProps {
+  onLoad?: () => void;
   sceneUrl?: string;
   width?: string;
   height?: string;

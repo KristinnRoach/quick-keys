@@ -46,7 +46,7 @@ export class WebAudioEngine {
     this.masterGain.connect(this.context.destination);
 
     this.samplerMode = this.config.sampler_mode;
-    console.log('instr: ', this.config.defaultInstruments);
+    // console.log('instr: ', this.config.defaultInstruments);
   }
 
   async initialize(): Promise<void> {
@@ -106,14 +106,14 @@ export class WebAudioEngine {
 
   async fetchAudioFile(path: string): Promise<ArrayBuffer> {
     const response = await fetch(path);
-    console.log(
-      'Fetching from path:',
-      path,
-      '\nStatus:',
-      response.status,
-      '\nContent-Type:',
-      response.headers.get('Content-Type')
-    );
+    // console.log(
+    //   'Fetching from path:',
+    //   path,
+    //   '\nStatus:',
+    //   response.status,
+    //   '\nContent-Type:',
+    //   response.headers.get('Content-Type')
+    // );
 
     if (!response.ok) {
       throw new Error(
