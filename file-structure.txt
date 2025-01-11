@@ -1,4 +1,4 @@
-/Users/kristinnroachgunnarsson/Desktop/KiddApp/vor-25/piano-solidjs/
+/Users/kristinnroachgunnarsson/Desktop/KiddApp/vor-25/quick-keyz/
 ├── .DS_Store
 ├── .gitignore
 ├── README.md
@@ -20,11 +20,6 @@
 │   │   │   │   ├── 53.mp3
 │   │   │   │   ├── 55.mp3
 │   │   │   │   └── 57.mp3
-│   │   │   └── soft-piano/
-│   │   │       ├── .DS_Store
-│   │   │       ├─] mp3/ (ignored)
-│   │   │       ├─] wav/ (ignored)
-│   │   │       └─] webm/ (ignored)
 │   │   └── single-samples/
 │   │       ├── .DS_Store
 │   │       └── default/
@@ -65,16 +60,13 @@
 │   └── ui/
 │       ├── input/
 │       │   ├── KeyboardController.ts
-│       │   ├── MidiController.ts
-│       │   ├── MidiParser.ts
 │       │   └── keymap.ts
 │       └── ui-components/
+│           ├── Buttons/
+│           │   └── Toggle.tsx
 │           ├── KeyboardSpline.tsx
 │           ├── PlaybackControls.txt
-│           ├── SampleList.txt
-│           └── WaveformDisplay.txt
 ├── tailwind.config.ts
-├── trash/
 ├── tsconfig.json
 ├── vite.config.ts
 └── yarn.lock

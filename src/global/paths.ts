@@ -1,7 +1,7 @@
 // Constants for audio asset paths, in 'public' directory //
 
-const MULTI_DIR = '/audio/multi-sample-instruments/';
-const SINGLE_DIR = '/audio/single-samples/';
+const MULTI_DIR = './audio/multi-sample-instruments/';
+const SINGLE_DIR = './audio/single-samples/';
 
 /* TODO: Make this dynamic:
 

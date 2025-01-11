@@ -62,9 +62,15 @@
 
     <script src="/src/index.tsx" type="module"></script>
 
-    <script>
+    <script type="module">
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
+          // Don't register service worker in development
+          if (import.meta.env.DEV) {
+            console.log('Skipping service worker registration in development');
+            return;
+          }
+
           navigator.serviceWorker
             .register('/service-worker.js')
             .then((registration) => {
