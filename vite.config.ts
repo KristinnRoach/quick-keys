@@ -8,14 +8,17 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
           'keyboard-spline': ['./src/ui/ui-components/KeyboardSpline'],
-          // 'audio-engine': ['./src/logic/audio/WebAudioEngine'],
+          'audio-engine': ['./src/logic/audio/WebAudioEngine'],
         },
       },
     },
-    minify: true,
+  },
+  optimizeDeps: {
+    include: ['solid-js'],
   },
 });
