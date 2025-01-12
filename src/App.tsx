@@ -69,7 +69,14 @@ const App: Component = () => {
           }
         >
           <div id='keyboardWrapper'>
-            <KeyboardSpline onLoad={() => setSplineLoaded(true)} />
+            <KeyboardSpline
+              onLoad={() => setSplineLoaded(true)}
+              // Optional props:
+              // width='100vw'
+              // height='100vh'
+              // mixBlendMode='hard-light'
+              // sceneUrl='https://your-custom-scene-url.splinecode' // Alternative scene: will use default if not provided
+            />
           </div>
         </Suspense>
 
@@ -96,35 +103,3 @@ const App: Component = () => {
 };
 
 export default App;
-
-//           <div id='keyboardWrapper'>
-//             <KeyboardSpline
-//             // Optional props:
-//             // width='100vw'
-//             // height='100vh'
-//             // mixBlendMode='hard-light'
-//             // sceneUrl='https://your-custom-scene-url.splinecode' // Optional: will use default if not provided
-//             />
-//           </div>
-
-//           <div>
-//             <button
-//               class='toggle-button'
-//               onClick={playbackActions.toggleSamplerMode}
-//             >
-//               Toggle: {playbackState.instrumentMode}
-//             </button>
-//           </div>
-
-//           <div class='mt-4'>
-//             Active Notes: {Array.from(playbackState.activeNotes).join(', ')}
-//           </div>
-//         </>
-//       ) : (
-//         <div>Initializing...</div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default App;

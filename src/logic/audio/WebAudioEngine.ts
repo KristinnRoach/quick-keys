@@ -1,7 +1,14 @@
-import { WebAudioEngineConfig, DEFAULT_CONFIG } from '../config';
-import { DEFAULT_VELOCITY, MidiNoteUtils } from '../../global/define/midiNote';
+import { DEFAULT_CONFIG } from './audio-config';
+import { MidiNoteUtils } from '../midi/midiNote';
+import { MidiConfig } from '../midi/midi-config';
+import { DEFAULT_INSTRUMENTS } from '../../global/paths';
 
 export type VoiceNode = { source: AudioBufferSourceNode; gain: GainNode };
+
+export interface WebAudioEngineConfig {
+  sampler_mode: 'single-sample' | 'multi-sample';
+  defaultInstruments?: typeof DEFAULT_INSTRUMENTS;
+}
 
 type SamplePath = {
   midiNote: number;
@@ -11,7 +18,7 @@ type SamplePath = {
 type Instrument = {
   midiBufferMap: Map<number, AudioBuffer>; // key: midiNote, value: AudioBuffer
   midiStartTimeMap: Map<number, number>; // key: midiNote, value: startTime (default is after silenceThreshold is reached) // Or trim it off
-  // attack / release, endtime, loop points, peak volume, etc..
+  // params: attack / release, endtime, loop points, volume, etc..
   // nrSamples: number;
   // midiNotes: number[];
   // velocityLayers?
@@ -260,7 +267,10 @@ export class WebAudioEngine {
     });
   }
 
-  playNote(midiNote: number, velocity: number = DEFAULT_VELOCITY): void {
+  playNote(
+    midiNote: number,
+    velocity: number = MidiConfig.DEFAULTS.VELOCITY
+  ): void {
     const { buffer, sampleMidiNote, startTime } =
       this.getBufferFromMidi(midiNote); // midiOffset => semitone offset of buffer pitch from requested midi note
     const voice = this.createVoiceNode(buffer);

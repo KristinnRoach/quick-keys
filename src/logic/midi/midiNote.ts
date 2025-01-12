@@ -2,9 +2,6 @@
 
 // Refactor, considering I only really use MidiNoteUtils
 
-// and this...
-export const DEFAULT_VELOCITY = 100;
-
 //// Interface ////
 
 // export interface MidiNote {

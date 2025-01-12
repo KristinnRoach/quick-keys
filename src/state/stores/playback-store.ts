@@ -1,7 +1,7 @@
 // src/state/stores/playbackStore.ts
 import { createStore } from 'solid-js/store';
 import { WebAudioEngine } from '../../logic/audio/WebAudioEngine';
-import { MidiNoteUtils } from '../../global/define/midiNote';
+import { MidiNoteUtils } from '../../logic/midi/midiNote';
 
 // Draft - Plan system that can be used in Hljodsmali as well
 
