@@ -14,31 +14,31 @@
     />
 
     <!-- Manifest and icons -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/quick-keys/manifest.json" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="/icons/icon-192x192.png"
+      href="/quick-keys/icons/icon-192x192.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="/icons/maskable-192x192.png"
+      href="/quick-keys/icons/maskable-192x192.png"
       purpose="maskable"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="/icons/icon-512x512.png"
+      href="/quick-keys/icons/icon-512x512.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="/icons/maskable-512x512.png"
+      href="/quick-keys/icons/maskable-512x512.png"
       purpose="maskable"
     />
 
@@ -48,39 +48,22 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- Additional iOS specific icons (if needed) -->
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="/quick-keys/icons/icon-192x192.png" />
     <link
       rel="apple-touch-icon-precomposed"
-      href="/icons/maskable-192x192.png"
+      href="/quick-keys/icons/maskable-192x192.png"
       purpose="maskable"
     />
+    <script type="module" crossorigin src="/quick-keys/assets/index-BWfcGgt3.js"></script>
+    <link rel="modulepreload" crossorigin href="/quick-keys/assets/keyboard-spline-B0RdMMA5.js">
+    <link rel="modulepreload" crossorigin href="/quick-keys/assets/audio-engine-QnhPrbqL.js">
+    <link rel="stylesheet" crossorigin href="/quick-keys/assets/index-CNp8ocIj.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div id="root"></div>
 
-    <script src="/src/index.tsx" type="module"></script>
 
-    <script type="module">
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          // Don't register service worker in development
-          if (import.meta.env.DEV) {
-            console.log('Skipping service worker registration in development');
-            return;
-          }
-
-          navigator.serviceWorker
-            .register('/service-worker.js')
-            .then((registration) => {
-              console.log('ServiceWorker registration successful');
-            })
-            .catch((err) => {
-              console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-      }
-    </script>
   </body>
 </html>
