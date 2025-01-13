@@ -6,7 +6,11 @@ const AUDIO_CACHE = `quick-keyz-audio-${CACHE_VERSION}`;
 const STATIC_CACHE = `quick-keyz-static-${CACHE_VERSION}`;
 
 // Organize assets by type
-const CORE_ASSETS = ['./', './index.html', './manifest.json'];
+const CORE_ASSETS = [
+  '/quick-keys/', // Base path
+  '/quick-keys/index.html',
+  '/quick-keys/manifest.json',
+];
 
 const AUDIO_ASSETS = [
   './audio/multi-sample-instruments/default/48.mp3',
