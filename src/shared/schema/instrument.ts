@@ -1,8 +1,4 @@
-/* Currently using the same types for both the core and data-layer */
-
 export type InstrumentParam = keyof InstrumentSettings;
-
-export type InstrumentID = number; // for now
 
 export type Instrument = {
   // design to be able to easily select multiple instruments for playback.
@@ -17,23 +13,6 @@ export type Instrument = {
   // midiNotes: number[];
   // velocityLayers?
   // random variation layers?
-};
-
-export type Sample = {
-  id?: number;
-  blob: Blob;
-  name: string;
-  slug: string;
-  userId: number;
-
-  rootMidiNote: number;
-  bufferDuration: number;
-
-  fileInfo?: AudioFileInfo;
-
-  createdAt: Date;
-  updatedAt: Date;
-  lastUsed: Date;
 };
 
 export type InstrumentSettings = {
@@ -69,14 +48,4 @@ export type InstrumentSettings = {
 
   lpf_cutoff: number;
   hpf_cutoff: number;
-};
-
-// TODO: Check if this is needed / remove redundant options
-// Move this to validation service interface?
-export type AudioFileInfo = {
-  mime_type: 'string';
-  sampleRate: number;
-  bitDepth?: number;
-  format?: string;
-  extension?: 'string';
 };

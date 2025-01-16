@@ -1,7 +1,7 @@
 import { DEFAULT_CONFIG } from './audio-config';
 import { MidiNoteUtils } from '../midi/midiNote';
 import { MidiConfig } from '../midi/midi-config';
-import { DEFAULT_INSTRUMENTS } from '../../global/paths';
+import { DEFAULT_INSTRUMENTS } from '../../shared/paths';
 
 export type VoiceNode = { source: AudioBufferSourceNode; gain: GainNode };
 

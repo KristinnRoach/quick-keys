@@ -1,10 +1,11 @@
-/Users/kristinnroachgunnarsson/Desktop/KiddApp/vor-25/quick-keyz/
+/Users/kristinnroachgunnarsson/Desktop/KiddApp/web-audio-apps/apps/quick-keyz/
 ├── .DS_Store
 ├── .gitignore
 ├── README.md
-├─] dist/ (ignored)
+├── file-structure.txt
 ├── index.html
 ├─] node_modules/ (ignored)
+├─] notes/ (ignored)
 ├── package.json
 ├── postcss.config.js
 ├── public/
@@ -20,6 +21,11 @@
 │   │   │   │   ├── 53.mp3
 │   │   │   │   ├── 55.mp3
 │   │   │   │   └── 57.mp3
+│   │   │   └── soft-piano/
+│   │   │       ├── .DS_Store
+│   │   │       ├─] mp3/ (ignored)
+│   │   │       ├─] wav/ (ignored)
+│   │   │       └─] webm/ (ignored)
 │   │   └── single-samples/
 │   │       ├── .DS_Store
 │   │       └── default/
@@ -43,16 +49,22 @@
 │   ├── .DS_Store
 │   ├── App.tsx
 │   ├── global/
-│   │   ├── define/
-│   │   │   └── midiNote.ts
 │   │   ├── paths.ts
+│   │   ├── schema/
+│   │   │   ├── sample.ts
+│   │   │   └── user.ts
 │   │   └── utils/
+│   │       ├── date-time.ts
+│   │       └── slug.ts
 │   ├── index.css
 │   ├── index.tsx
 │   ├── logic/
 │   │   ├── audio/
-│   │   │   └── WebAudioEngine.ts
-│   │   └── config.ts
+│   │   │   ├── WebAudioEngine.ts
+│   │   │   └── audio-config.ts
+│   │   └── midi/
+│   │       ├── midi-config.ts
+│   │       └── midiNote.ts
 │   ├── state/
 │   │   └── stores/
 │   │       └── playback-store.ts
@@ -60,13 +72,18 @@
 │   └── ui/
 │       ├── input/
 │       │   ├── KeyboardController.ts
+│       │   ├── MidiController.ts
+│       │   ├── MidiParser.ts
 │       │   └── keymap.ts
 │       └── ui-components/
 │           ├── Buttons/
 │           │   └── Toggle.tsx
 │           ├── KeyboardSpline.tsx
 │           ├── PlaybackControls.txt
+│           ├── SampleList.txt
+│           └── WaveformDisplay.txt
 ├── tailwind.config.ts
+├── trash/
 ├── tsconfig.json
 ├── vite.config.ts
 └── yarn.lock

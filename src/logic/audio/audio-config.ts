@@ -1,4 +1,4 @@
-import { DEFAULT_INSTRUMENTS } from '../../global/paths';
+import { DEFAULT_INSTRUMENTS } from '../../shared/paths';
 import { WebAudioEngineConfig } from './WebAudioEngine';
 
 export const DEFAULT_CONFIG: WebAudioEngineConfig = {

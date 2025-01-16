@@ -1,7 +1,7 @@
 node_modules
 dist
 
-README_template_kid-note.md
+notes
 *kid-note.txt
 
 public/audio/multi-sample-instruments/soft-piano/*
