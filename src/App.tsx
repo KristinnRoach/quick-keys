@@ -7,7 +7,7 @@ import {
   onMount,
   Show,
 } from 'solid-js';
-import { WebAudioEngine } from './logic/audio/WebAudioEngine';
+import { WebAudioEngine } from './web-audio-core/audio/WebAudioEngine';
 import { createPlaybackStore } from './state/stores/playback-store';
 import { KeyboardController } from './ui/input/KeyboardController';
 

@@ -1,6 +1,6 @@
 // src/state/stores/playbackStore.ts
 import { createStore } from 'solid-js/store';
-import { WebAudioEngine } from '../../logic/audio/WebAudioEngine';
+import { WebAudioEngine } from '../../web-audio-core/audio/WebAudioEngine';
 
 // Draft - Plan system that can be used in Hljodsmali as well
 
