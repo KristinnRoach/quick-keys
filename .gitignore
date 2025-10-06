@@ -9,4 +9,4 @@ drafts/
 .DS_Store
 *.log
 
-public/audio/multi-sample-instruments/soft-piano/*
+public/audio/multi-sample-instruments/soft-piano

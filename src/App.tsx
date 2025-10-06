@@ -23,17 +23,16 @@ const App: Component = () => {
   const [playbackState, playbackActions] = createPlaybackStore(audioEngine);
 
   onMount(() => {
-    // Check initial state
     setIsOffline(!navigator.onLine);
 
-    // Initialize
+    // Init
     playbackActions.initialize();
 
-    // Add listeners
+    // Listeners
     window.addEventListener('online', () => setIsOffline(false));
     window.addEventListener('offline', () => setIsOffline(true));
 
-    // Clean up on unmount
+    // Clean up
     return () => {
       window.removeEventListener('online', () => setIsOffline(false));
       window.removeEventListener('offline', () => setIsOffline(true));
@@ -41,7 +40,7 @@ const App: Component = () => {
   });
 
   return (
-    <div class='min-h-screen bg-gray-900 text-white p-16 flex flex-col items-center'>
+    <div class='min-h-screen bg-gray-900 text-white p-4 sm:p-8 md:p-16 flex flex-col items-center'>
       {isOffline() && (
         <div class='fixed top-0 w-full bg-yellow-600 text-white text-center py-2'>
           You are currently offline. Some features may be limited.
