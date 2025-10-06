@@ -41,7 +41,7 @@ const DEFAULT_SINGLE_SAMPLE_INSTRUMENT = {
   fileExt: 'mp3',
   directory: SINGLE_DIR + 'default/',
   midiNote: 60,
-  path: SINGLE_DIR + 'default/' + 'sPno_60.mp3', //  'vibe_57.mp3'
+  path: SINGLE_DIR + 'default/' + 'sPno_60.mp3',
 };
 
 export const DEFAULT_INSTRUMENTS = {

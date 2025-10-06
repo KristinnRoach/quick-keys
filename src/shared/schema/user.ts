@@ -1,8 +1,8 @@
+export type UserId = string;
+
 export interface User {
-  id?: string;
+  id?: UserId;
   name: string;
   email: string;
   lastLogin: Date;
 }
-
-export type UserId = number; // for now

@@ -1,7 +1,12 @@
 node_modules
 dist
 
-notes
+notes/
+drafts/
 *kid-note.txt
+
+.vscode/
+.DS_Store
+*.log
 
 public/audio/multi-sample-instruments/soft-piano/*
