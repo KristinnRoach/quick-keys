@@ -9,11 +9,11 @@ import {
 } from 'solid-js';
 import { WebAudioEngine } from './web-audio-core/audio/WebAudioEngine';
 import { createPlaybackStore } from './state/stores/playback-store';
-import { KeyboardController } from './ui/input/KeyboardController';
+import { KeyboardController } from './web-audio-core/input/KeyboardController';
 
 // Lazy load non-critical components
-const KeyboardSpline = lazy(() => import('./ui/ui-components/KeyboardSpline'));
-const Toggle = lazy(() => import('./ui/ui-components/Buttons/Toggle'));
+const KeyboardSpline = lazy(() => import('./ui/components/KeyboardSpline'));
+const Toggle = lazy(() => import('./ui/components/buttons/Toggle'));
 
 const App: Component = () => {
   const [isOffline, setIsOffline] = createSignal(false);
@@ -41,7 +41,7 @@ const App: Component = () => {
   });
 
   return (
-    <div class='min-h-screen bg-gray-900 text-white p-4 flex flex-col justify-center items-center'>
+    <div class='min-h-screen bg-gray-900 text-white p-16 flex flex-col items-center'>
       {isOffline() && (
         <div class='fixed top-0 w-full bg-yellow-600 text-white text-center py-2'>
           You are currently offline. Some features may be limited.
@@ -68,32 +68,33 @@ const App: Component = () => {
             <div class='w-full h-64 bg-gray-800 animate-pulse rounded-lg'></div>
           }
         >
-          <div id='keyboardWrapper'>
+          <div
+            id='keyboardWrapper'
+            class='relative w-full max-w-[1000px] mx-auto'
+          >
             <KeyboardSpline
               onLoad={() => setSplineLoaded(true)}
-              // Optional props:
-              // width='100vw'
-              // height='100vh'
-              // mixBlendMode='hard-light'
-              // sceneUrl='https://your-custom-scene-url.splinecode' // Alternative scene: will use default if not provided
+              zoom={1}
+              offsetY={50}
+              visibleHeight={295}
+              class='flex flex-col items-center rounded-lg p-8 mb-24'
             />
+            <Suspense
+              fallback={
+                <div class='absolute left-1/2 -translate-x-1/2 bottom-4 w-24 h-8 bg-gray-800 animate-pulse rounded'></div>
+              }
+            >
+              <Toggle
+                mode={playbackState.instrumentMode}
+                onClick={playbackActions.toggleSamplerMode}
+                class='absolute left-1/2 -translate-x-1/2 bottom-4'
+              />
+            </Suspense>
           </div>
         </Suspense>
 
-        <Suspense
-          fallback={
-            <div class='mt-4 w-24 h-8 bg-gray-800 animate-pulse rounded'></div>
-          }
-        >
-          <Toggle
-            mode={playbackState.instrumentMode}
-            onClick={playbackActions.toggleSamplerMode}
-            class='mt-4'
-          />
-        </Suspense>
-
         <Show when={isSplineLoaded()}>
-          <div class='mt-4 font-mono text-sm opacity-75'>
+          <div class='mt-4 font-mono text-sm opacity-50'>
             Active Notes: {Array.from(playbackState.activeNotes).join(', ')}
           </div>
         </Show>

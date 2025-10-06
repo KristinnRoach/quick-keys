@@ -10,7 +10,7 @@ export type Instrument = {
   isSingleSample: boolean;
   params: InstrumentSettings;
 
-  // midiNotes: number[];
+  // sampleID to midinote map?
   // velocityLayers?
   // random variation layers?
 };
@@ -21,9 +21,9 @@ export type InstrumentSettings = {
 
   volume: number;
   startPoint: number;
-  playDuration: number; // same as endpoint
+  playDuration: number;
 
-  loopVolume?: number; // TODO: implement
+  loopVolume?: number;
   loopStart: number;
   loopDuration: number;
 
