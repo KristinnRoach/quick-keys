@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "gh-deploy": "gh-pages -d dist"
   },
   "license": "MIT",
   "devDependencies": {
