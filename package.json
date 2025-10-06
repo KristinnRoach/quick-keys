@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@splinetool/runtime": "^1.9.58",
-    "solid-js": "^1.9.3",
+    "solid-js": "^1.9.4",
     "solid-three": "^0.2.0",
     "three": "^0.172.0"
   }
